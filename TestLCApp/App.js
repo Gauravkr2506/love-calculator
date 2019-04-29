@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Animated, Easing } from "react-native";
 import { Provider } from "react-redux";
 import store from "./src/reducers";
-import SetName from "./src/screens/set-name";
+import YourDetails from "./src/screens/your-detail";
+import PartnerDetails from "./src/screens/partner-detail";
 import NameMatchCalculator from "./src/screens/name-match-calculator.";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 const option = {
@@ -17,8 +18,14 @@ const option = {
 };
 const MainNav = createStackNavigator(
 	{
-		SetName: {
-			screen: SetName,
+		YourDetails: {
+			screen: YourDetails,
+			navigationOptions: ({ navigation }) => ({
+				title: "Love Calculator"
+			})
+		},
+		PartnerDetails: {
+			screen: PartnerDetails,
 			navigationOptions: ({ navigation }) => ({
 				title: "Love Calculator"
 			})
@@ -26,7 +33,7 @@ const MainNav = createStackNavigator(
 		NameMatchCalculator: {
 			screen: NameMatchCalculator,
 			navigationOptions: ({ navigation }) => ({
-				title: "Love Calculator"
+				title: "Result"
 			})
 		}
 		// Video: Video
@@ -35,7 +42,7 @@ const MainNav = createStackNavigator(
 		defaultNavigationOptions: () =>
 			Object.assign(
 				{
-					initialRouteName: "SetName"
+					initialRouteName: "YourDetails"
 				},
 				option
 			),

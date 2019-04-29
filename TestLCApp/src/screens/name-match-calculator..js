@@ -13,6 +13,7 @@ class NameMatchCalculatorScreen extends React.Component {
 		super(props);
 		this.state = { count: 0 };
 		this.incrementer = this.incrementer.bind(this);
+		this.getMeggage = this.getMeggage.bind(this);
 		this.count = 0;
 		this.interval = "";
 	}
@@ -24,23 +25,42 @@ class NameMatchCalculatorScreen extends React.Component {
 
 	incrementer() {
 		if (this.state.count >= this.props.score) {
-			Vibration.vibrate(3000);
+			Vibration.vibrate(1000);
 			clearInterval(this.interval);
 		} else {
 			// this.count++;
 			this.setState({ count: ++this.state.count });
 		}
 	}
-
+	getMeggage() {
+		if (this.props.score == 100) {
+			return "Made for each other";
+		}
+		if (this.props.score > 85) {
+			return "Magnificient";
+		}
+		if (this.props.score > 65) {
+			return "Charming couples";
+		}
+		if (this.props.score > 35) {
+			return "Adorable love birds";
+		}
+		if (this.props.score > 35) {
+			return "Cupid blessings are in it's way";
+		}
+		return "";
+	}
 	render() {
 		return (
 			<Container style={{ flex: 1, alignItems: "center" }}>
 				<Text>{this.props.your_name}</Text>
 				<Text>{this.props.partner_name}</Text>
 				<ImageBackground style={{ width: 300, height: 300, alignItems: "center", justifyContent: "center" }} source={require("./../img/heartBeat.gif")}>
-					<Text style={{ fontSize: 40, color: "#fff" }}>{this.state.count}</Text>
+					<Text style={{ fontSize: 40, color: "#fff" }}>{this.state.count} %</Text>
 				</ImageBackground>
 				<Text>{PARA1}</Text>
+				{this.state.count >= this.props.score ? <Text>{this.getMeggage()}</Text> : null}
+				{this.state.count >= this.props.score ? <Text>{`${this.props.partner_name} loves ${this.props.your_name} ${this.props.score} %`}</Text> : null}
 			</Container>
 		);
 	}
