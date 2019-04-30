@@ -8,7 +8,7 @@ import NameMatchCalculator from "./src/screens/name-match-calculator.";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 const option = {
 	headerStyle: {
-		backgroundColor: "#ba2a6a"
+		backgroundColor: "#dc0945"
 	},
 	headerTintColor: "#fff",
 	headerTitleStyle: {
@@ -21,19 +21,20 @@ const MainNav = createStackNavigator(
 		YourDetails: {
 			screen: YourDetails,
 			navigationOptions: ({ navigation }) => ({
-				title: "Love Calculator"
+				title: "Your Details"
 			})
 		},
 		PartnerDetails: {
 			screen: PartnerDetails,
 			navigationOptions: ({ navigation }) => ({
-				title: "Love Calculator"
+				title: "Partner Details"
 			})
 		},
 		NameMatchCalculator: {
 			screen: NameMatchCalculator,
 			navigationOptions: ({ navigation }) => ({
-				title: "Result"
+				title: "Result",
+				headerLeft: null
 			})
 		}
 		// Video: Video

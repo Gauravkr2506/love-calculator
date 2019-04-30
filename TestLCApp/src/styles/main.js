@@ -1,6 +1,7 @@
 import { StyleSheet, StatusBar, Dimensions } from "react-native";
 import healthmug from "./common-variables.js";
 export default StyleSheet.create({
+	containerView: { alignItems: "center", justifyContent: "center", flex: 1, backgroundColor: "#d632aa" },
 	androidNav: {
 		height: 50 + StatusBar.currentHeight,
 		paddingTop: StatusBar.currentHeight
@@ -171,6 +172,45 @@ export default StyleSheet.create({
 	},
 	//padding end
 	//margins start
+	marginLg: {
+		margin: healthmug.gapLg
+	},
+	marginMd: {
+		margin: healthmug.gapMd
+	},
+	marginSm: {
+		margin: healthmug.gapSm
+	},
+	marginXs: {
+		margin: healthmug.gapXs
+	},
+
+	marginHorizontalLg: {
+		marginHorizontal: healthmug.gapLg
+	},
+	marginHorizontalMd: {
+		marginHorizontal: healthmug.gapMd
+	},
+	marginHorizontalSm: {
+		marginHorizontal: healthmug.gapSm
+	},
+	marginHorizontalXs: {
+		marginHorizontal: healthmug.gapXs
+	},
+
+	marginVerticalLg: {
+		marginVertical: healthmug.gapLg
+	},
+	marginVerticalMd: {
+		marginVertical: healthmug.gapMd
+	},
+	marginVerticalSm: {
+		marginVertical: healthmug.gapSm
+	},
+	marginVerticalXs: {
+		marginVertical: healthmug.gapXs
+	},
+
 	marginTopLg: {
 		marginTop: healthmug.gapLg
 	},
@@ -182,6 +222,45 @@ export default StyleSheet.create({
 	},
 	marginTopXs: {
 		marginTop: healthmug.gapXs
+	},
+
+	marginBottomLg: {
+		marginBottom: healthmug.gapLg
+	},
+	marginBottomMd: {
+		marginBottom: healthmug.gapMd
+	},
+	marginBottomSm: {
+		marginBottom: healthmug.gapSm
+	},
+	marginBottomXs: {
+		marginBottom: healthmug.gapXs
+	},
+
+	marginLeftLg: {
+		marginLeft: healthmug.gapLg
+	},
+	marginLeftMd: {
+		marginLeft: healthmug.gapMd
+	},
+	marginLeftSm: {
+		marginLeft: healthmug.gapSm
+	},
+	marginLeftXs: {
+		marginLeft: healthmug.gapXs
+	},
+
+	marginRightLg: {
+		marginRight: healthmug.gapLg
+	},
+	marginRightMd: {
+		marginRight: healthmug.gapMd
+	},
+	marginRightSm: {
+		marginRight: healthmug.gapSm
+	},
+	marginRightXs: {
+		marginRight: healthmug.gapXs
 	},
 	//margins end
 	horizontalSep: {
@@ -233,6 +312,65 @@ export default StyleSheet.create({
 		padding: 10
 	},
 	//custom card end
+
+	//lc personal detail form start
+	formItem: {
+		marginVertical: 10,
+		width: "100%"
+	},
+	lcpcInput: {
+		backgroundColor: "#fff"
+	},
+	lcPickerInput: {
+		height: 50,
+		backgroundColor: "#fff"
+	},
+	lcFormError: {
+		color: healthmug.brandSecondary
+	},
+	processFlow: {
+		position: "relative",
+		marginTop: 20,
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center"
+	},
+	stepBox: {
+		width: 50,
+		height: 50,
+		borderRadius: 25,
+		backgroundColor: "#ca87d7",
+		alignItems: "center",
+		justifyContent: "center"
+	},
+	stepActive: {
+		backgroundColor: "#ff6e13"
+	},
+	stepComplete: {
+		backgroundColor: "#c8fc9e"
+	},
+	stepBoxText: {
+		color: "#f0bcfe",
+		fontSize: 20
+	},
+	stepBoxTextActive: {
+		color: "#000",
+		fontSize: 20
+	},
+	stepTextActive: {
+		color: healthmug.brandSecondary
+	},
+	stepText: {
+		color: "#f0bcfe",
+		fontSize: 12
+	},
+	processLine: {
+		position: "absolute",
+		top: 24,
+		height: 3,
+		width: "100%",
+		backgroundColor: "#e7beef"
+	},
 
 	//home page style start
 	homeBtn: {

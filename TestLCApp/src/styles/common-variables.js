@@ -4,7 +4,7 @@ const healthmug = {
 	deviceWidth: Dimensions.get("window").width,
 	deviceHeight: Dimensions.get("window").height,
 	//color variables
-	brandPrimary: platform === "ios" ? "#007aff" : "#a785bb",
+	brandPrimary: platform === "ios" ? "#007aff" : "#d632aa",
 	brandSecondary: "#d8df21",
 	brandInfo: "#62B1F6",
 	brandSuccess: "#5cb85c",
