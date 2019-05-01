@@ -1,6 +1,6 @@
 import React from "react";
 import SplashScreen from "react-native-splash-screen";
-import { Image, InteractionManager, ActivityIndicator, FlatList, Animated, Easing, ImageBackground, Vibration, TouchableOpacity, BackHandler } from "react-native";
+import { Image, InteractionManager, Clipboard, Linking, Share, ToastAndroid, ImageBackground, Vibration, TouchableOpacity, BackHandler, TouchableHighlight } from "react-native";
 
 import { Form, Item, Input, Container, Content, StyleProvider, Root, Header, Title, Button, Left, Body, Text, Icon, Card, CardItem, Row, Col, View, Grid } from "native-base";
 import { connect } from "react-redux";
@@ -16,12 +16,16 @@ class NameMatchCalculatorScreen extends React.Component {
 		this.state = { count: 0 };
 		this.incrementer = this.incrementer.bind(this);
 		this.getMeggage = this.getMeggage.bind(this);
+		this.clipboard = this.clipboard.bind(this);
+		this.whatsapp = this.whatsapp.bind(this);
+		this.shareTo = this.shareTo.bind(this);
 		this.tryAgain = this.tryAgain.bind(this);
 		this.count = 0;
 		this.interval = "";
 	}
 	componentDidMount() {
 		InteractionManager.runAfterInteractions(() => {
+			this.props.navigation.setParams({ newTest: () => this.props.navigation.navigate("YourDetails") });
 			BackHandler.addEventListener("hardwareBackPress", () => true);
 			AdMobInterstitial.setAdUnitID("ca-app-pub-9969212413329273/9001081106");
 			AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
@@ -38,7 +42,25 @@ class NameMatchCalculatorScreen extends React.Component {
 	}
 	componentWillUnmount() {
 		clearInterval(this.interval);
-		BackHandler.removeEventListener("hardwareBackPress", () => true);
+		InteractionManager.runAfterInteractions(() => {
+			BackHandler.removeEventListener("hardwareBackPress", () => true);
+			this.props.dispatch({ type: "reset_data" });
+		});
+	}
+	clipboard() {
+		Clipboard.setString(`${this.props.partner_name} loves ${this.props.your_name} ${this.props.score} '%' /\n https://play.google.com/store/apps/details?id=com.testlcapp`);
+		ToastAndroid.show("Copied to clipboard", ToastAndroid.SHORT);
+	}
+	whatsapp() {
+		let msg = `${this.props.partner_name} 💞 loves ${this.props.your_name} ${this.props.score} percent                      
+https://play.google.com/store/apps/details?id=com.testlcapp`;
+		Linking.openURL(`whatsapp://send?text=${msg} `);
+	}
+	shareTo() {
+		Share.share({
+			title: "Love Calculator Result",
+			message: `${this.props.partner_name} loves ${this.props.your_name} ${this.props.score} \n https://play.google.com/store/apps/details?id=com.testlcapp`
+		});
 	}
 
 	incrementer() {
@@ -118,6 +140,60 @@ class NameMatchCalculatorScreen extends React.Component {
 							) : null}
 						</View>
 					</Content>
+					{this.state.count >= this.props.score ? (
+						<View style={{ height: 70, backgroundColor: "green" }}>
+							<View style={{ height: 40, flexDirection: "row", justifyContent: "space-around", alignItems: "center", backgroundColor: "#dc0945" }}>
+								<TouchableHighlight
+									onPress={this.clipboard}
+									style={{
+										width: 30,
+										height: 30,
+										backgroundColor: "#ff8000",
+										justifyContent: "center",
+										alignItems: "center",
+										borderRadius: 25,
+										borderWidth: 2,
+										borderColor: "#998B56"
+									}}
+								>
+									<Image style={{ width: 20, height: 20 }} source={require("./../img/copy.png")} />
+								</TouchableHighlight>
+								<TouchableHighlight
+									onPress={this.whatsapp}
+									style={{
+										width: 30,
+										height: 30,
+										backgroundColor: "#fff",
+										justifyContent: "center",
+										alignItems: "center",
+										borderRadius: 25,
+										borderWidth: 2,
+										borderColor: "#998B56"
+									}}
+								>
+									<Image style={{ width: 20, height: 20 }} source={require("./../img/whatsapp.png")} />
+								</TouchableHighlight>
+								<TouchableHighlight
+									onPress={this.shareTo}
+									style={{
+										width: 30,
+										height: 30,
+										backgroundColor: "#008000",
+										justifyContent: "center",
+										alignItems: "center",
+										borderRadius: 25,
+										borderWidth: 2,
+										borderColor: "#998B56"
+									}}
+								>
+									<Image style={{ width: 20, height: 20 }} source={require("./../img/share.png")} />
+								</TouchableHighlight>
+							</View>
+							<View style={{ height: 50, backgroundColor: "#333" }}>
+								<AdMobBanner adSize="smartBannerPortrait" adUnitID="ca-app-pub-9969212413329273/5416472580" />
+							</View>
+						</View>
+					) : null}
 				</ImageBackground>
 			</Container>
 		);

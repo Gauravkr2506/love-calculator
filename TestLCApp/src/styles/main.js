@@ -319,7 +319,8 @@ export default StyleSheet.create({
 		width: "100%"
 	},
 	lcpcInput: {
-		backgroundColor: "#fff"
+		backgroundColor: "#fff",
+		height: 50
 	},
 	lcPickerInput: {
 		height: 50,

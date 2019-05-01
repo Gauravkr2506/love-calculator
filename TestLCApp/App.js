@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Animated, Easing } from "react-native";
+import { Animated, Easing, View } from "react-native";
+import { Icon, Button } from "native-base";
 import { Provider } from "react-redux";
 import store from "./src/reducers";
 import YourDetails from "./src/screens/your-detail";
 import PartnerDetails from "./src/screens/partner-detail";
 import NameMatchCalculator from "./src/screens/name-match-calculator.";
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import styles from "./src/styles/main";
 const option = {
 	headerStyle: {
 		backgroundColor: "#dc0945"
@@ -34,7 +36,14 @@ const MainNav = createStackNavigator(
 			screen: NameMatchCalculator,
 			navigationOptions: ({ navigation }) => ({
 				title: "Result",
-				headerLeft: null
+				headerLeft: null,
+				headerRight: (
+					<View style={styles.flexRow}>
+						<Button transparent small light onPress={() => navigation.state.params.newTest()}>
+							<Icon type="MaterialIcons" name="fiber-new" />
+						</Button>
+					</View>
+				)
 			})
 		}
 		// Video: Video

@@ -1,5 +1,6 @@
 export const SET_INPUT = "SET_INPUT";
 export const CALCULATE_SCORE = "calculate_score";
+export const RESET_DATA = "reset_data";
 export const MULTI = "Magnificient,Marvelous,DelightFul";
 export const PARA1 = "Love is the flower you have got to let grow.";
 export const PARA2 = "Love is the better teacher than duty";

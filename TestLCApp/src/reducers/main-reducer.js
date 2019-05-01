@@ -1,4 +1,4 @@
-import { SET_INPUT, CALCULATE_SCORE } from "../actions/types";
+import { SET_INPUT, CALCULATE_SCORE, RESET_DATA } from "../actions/types";
 const INITIAL_STATE = {
 	your_name: "",
 	partner_name: "",
@@ -15,6 +15,9 @@ const INITIAL_STATE = {
 
 const MainReducer = (state = INITIAL_STATE, action) => {
 	var newstate = Object.assign({}, state);
+	if (action.type == RESET_DATA) {
+		return INITIAL_STATE;
+	}
 	if (action.type == SET_INPUT) {
 		if (action.key == "y_age" || action.key == "p_age") {
 			let q = action.value.replace(/\D/g, "");
@@ -33,7 +36,7 @@ const MainReducer = (state = INITIAL_STATE, action) => {
 		return newstate;
 	}
 	if (action.type == CALCULATE_SCORE) {
-		let score = 33;
+		let score = 10;
 		if (parseInt(newstate.y_age) - parseInt(newstate.p_age) > 6 || parseInt(newstate.y_age) - parseInt(newstate.p_age) < -6) {
 			score -= 11;
 		} else {
